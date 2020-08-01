@@ -52,20 +52,41 @@ func (s *Server) createBook(w http.ResponseWriter, r *http.Request) {
 
 func (s *Server) ListBooks(w http.ResponseWriter, r *http.Request) {
 	query := r.URL.Query()
+	booksModel := &[]models.Book{}
 
 	name := strings.Join(query["name"], "")
-	publication_year := strings.Join(query["publication_year"], "")
+	publicationYear := strings.Join(query["publication_year"], "")
 	edition := strings.Join(query["edition"], "")
 	author := strings.Join(query["author"], "")
 
-	var queryString string
+	chain := s.DB.Debug().Preload("Authors")
+	chain = chain.Joins("inner join book_authors on book_authors.book_id = books.id")
+	chain = chain.Joins("inner join authors on authors.id = book_authors.author_id")
+	chain = chain.Where("")
 
 	if name != "" {
-		queryString = `"name = ?", ` + name
+		chain = chain.Where("books.name = ?", name)
 	}
 
-	// AND
-	db.Where("name = ? AND age >= ?", "jinzhu", "22").Find(&users)
-	//// SELECT * FROM users WHERE name = 'jinzhu' AND age >= 22;
+	if publicationYear != "" {
+		chain = chain.Where("publication_year = ?", publicationYear)
+	}
+
+	if edition != "" {
+		chain = chain.Where("edition = ?", edition)
+	}
+
+	if author != "" {
+		chain = chain.Where("authors.name = ?", author)
+	}
+
+	err := chain.Group("books.id").Find(booksModel).Error
+	if err != nil {
+		utils.ERROR(w, http.StatusBadRequest, err)
+		return
+	}
+
+	utils.JSON(w, http.StatusOK, booksModel)
+	return
 
 }
