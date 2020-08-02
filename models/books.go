@@ -30,3 +30,40 @@ func (b *Book) GetAllBooks(db *gorm.DB) (*[]Book, error) {
 	}
 	return &books, nil
 }
+
+func ShowBook(db *gorm.DB, id int) (*Book, error) {
+	book := &Book{}
+
+	err := db.Debug().Table("books").Where("id = ?", id).First(book).Error
+	if err != nil {
+		return &Book{}, err
+	}
+	return book, nil
+}
+
+func DeleteBook(db *gorm.DB, id int) error {
+	book := &Book{}
+
+	err := db.Debug().Table("books").Where("id = ?", id).Delete(book).Error
+	if err != nil {
+		return err
+	}
+	return nil
+}
+
+func (b *Book) UpdateBook(db *gorm.DB, id int) (*Book, error) {
+
+	book := &Book{}
+
+	db.Debug().Table("books").Where("id = ?", id).First(&book)
+
+	book.Name = b.Name
+	book.Edition = b.Edition
+	book.PublicationYear = b.PublicationYear
+
+	err := db.Save(&book).Association("Authors").Replace(b.Authors).Error
+	if err != nil {
+		return &Book{}, err
+	}
+	return book, nil
+}
