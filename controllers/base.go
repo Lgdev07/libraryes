@@ -48,6 +48,8 @@ func (s *Server) InitializeRoutes() {
 	s.Router.HandleFunc("/authors", s.ListAuthors).Methods("GET")
 	s.Router.HandleFunc("/books", s.createBook).Methods("POST")
 	s.Router.HandleFunc("/books", s.ListBooks).Methods("GET")
+	s.Router.HandleFunc("/books/{id:[0-9]+}", s.DeleteBook).Methods("DELETE")
+	s.Router.HandleFunc("/books/{id:[0-9]+}", s.UpdateBook).Methods("PUT")
 }
 
 func (s *Server) RunServer() {
