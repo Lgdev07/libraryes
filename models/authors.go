@@ -27,7 +27,7 @@ func (a *Author) GetAllAuthors(db *gorm.DB) (*[]Author, error) {
 	return &authors, nil
 }
 
-func (a *Author) GetAuthorsById(db *gorm.DB, ids []int) (*[]Author, error) {
+func GetAuthorsById(db *gorm.DB, ids []int) (*[]Author, error) {
 	authors := []Author{}
 
 	if err := db.Debug().Table("authors").Where(ids).Find(&authors).Error; err != nil {
