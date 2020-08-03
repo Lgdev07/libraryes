@@ -43,9 +43,7 @@ func (s *Server) CreateAuthor(w http.ResponseWriter, r *http.Request) {
 }
 
 func (s *Server) ListAuthors(w http.ResponseWriter, r *http.Request) {
-	authors := &models.Author{}
-
-	authorsList, err := authors.GetAllAuthors(s.DB)
+	authorsList, err := models.GetAllAuthors(s.DB)
 	if err != nil {
 		utils.ERROR(w, http.StatusBadRequest, err)
 	}
@@ -100,6 +98,6 @@ func (s *Server) ImportCsvAuthor(w http.ResponseWriter, r *http.Request) {
 	buf.Reset()
 
 	resp["authors"] = authors
-	utils.JSON(w, http.StatusOK, resp)
+	utils.JSON(w, http.StatusCreated, resp)
 	return
 }
