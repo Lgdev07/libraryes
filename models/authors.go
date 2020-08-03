@@ -17,7 +17,7 @@ func (a *Author) Save(db *gorm.DB) (*Author, error) {
 	return a, nil
 }
 
-func (a *Author) GetAllAuthors(db *gorm.DB) (*[]Author, error) {
+func GetAllAuthors(db *gorm.DB) (*[]Author, error) {
 	authors := []Author{}
 
 	if err := db.Debug().Table("authors").Find(&authors).Error; err != nil {
