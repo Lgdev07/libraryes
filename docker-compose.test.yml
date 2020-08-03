@@ -1,0 +1,29 @@
+version: '3'
+services:
+  app:
+    container_name: olist_challenge_app_test
+    build: 
+      dockerfile: ./Dockerfile.test
+      context: .
+    restart: on-failure
+    volumes:
+      - .:/olist_challenge_test
+    depends_on:
+      - db_test
+
+  db_test:
+    image: postgres
+    container_name: olist_challenge_db_test
+    environment:
+      - POSTGRES_USER=${DB_USER} 
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_DB=${TEST_DB_NAME}
+    ports:
+      - '5432:5432'
+    volumes:
+      - database_postgres_test:/var/lib/postgresql/data
+
+volumes:
+  database_postgres_test:
+
+
