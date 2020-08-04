@@ -18,7 +18,7 @@ type Response struct {
 	Authors         []int  `json:"authors"`
 }
 
-func (s *Server) createBook(w http.ResponseWriter, r *http.Request) {
+func (s *Server) CreateBook(w http.ResponseWriter, r *http.Request) {
 	var resp = map[string]interface{}{"status": "success", "message": "Book created successfully"}
 
 	response := &Response{}
