@@ -1,0 +1,36 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/golang:1.12
+      - image: circleci/postgres:9.6-alpine
+        environment:
+          POSTGRES_USER: lgdev07
+          POSTGRES_DB: olist_challenge_test
+
+    environment:
+      GO111MODULE: "on"
+
+    working_directory: ~/usr/src/app
+
+    steps:
+      - checkout
+      - run:
+          name: "Fetch dependencies"
+          command: go mod download
+
+      - run:
+          name: Waiting for Postgres to be ready
+          command: dockerize -wait tcp://localhost:5432 -timeout 1m
+
+      - run:
+          name: Run unit tests
+          environment:
+            FORUM_DB_URL: "postgres://lgdev07@localhost:5432/olist_challenge_test?sslmode=disable"
+          command: go test -v ./tests/...
+
+workflows:
+  version: 2
+  build-workflow:
+    jobs:
+      - build
