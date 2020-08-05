@@ -90,7 +90,9 @@ func seedOneBook() (models.Book, error) {
 		app.DB.Model(&models.Author{}).Create(&authors[i])
 	}
 
-	authorsCreated, _ := models.GetAllAuthors(app.DB)
+	var params map[string]string
+
+	authorsCreated, _ := models.GetAllAuthors(app.DB, params)
 
 	book := models.Book{
 		Name:            "Book 1",

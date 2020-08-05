@@ -43,7 +43,14 @@ func (s *Server) CreateAuthor(w http.ResponseWriter, r *http.Request) {
 }
 
 func (s *Server) ListAuthors(w http.ResponseWriter, r *http.Request) {
-	authorsList, err := models.GetAllAuthors(s.DB)
+	query := r.URL.Query()
+
+	params := map[string]string{
+		"name": strings.Join(query["name"], ""),
+		"page": strings.Join(query["page"], ""),
+	}
+
+	authorsList, err := models.GetAllAuthors(s.DB, params)
 	if err != nil {
 		utils.ERROR(w, http.StatusBadRequest, err)
 	}

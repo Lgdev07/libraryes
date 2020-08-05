@@ -18,7 +18,9 @@ func TestCreateAuthor(t *testing.T) {
 		log.Fatal(err)
 	}
 
-	authors, err := models.GetAllAuthors(app.DB)
+	var params map[string]string
+
+	authors, err := models.GetAllAuthors(app.DB, params)
 	if err != nil {
 		log.Fatal(err)
 	}

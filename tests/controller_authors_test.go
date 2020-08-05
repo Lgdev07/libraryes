@@ -105,7 +105,9 @@ func TestUploadImage(t *testing.T) {
 	assert.Equal(t, responseInterface["status"], "success")
 	assert.Equal(t, responseInterface["message"], "Authors successfully created")
 
-	authors, _ := models.GetAllAuthors(app.DB)
+	var params map[string]string
+
+	authors, _ := models.GetAllAuthors(app.DB, params)
 	assert.Equal(t, len(*authors), 6)
 
 }
