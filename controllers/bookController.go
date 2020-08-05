@@ -6,8 +6,8 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/Lgdev07/olist_challenge/models"
-	"github.com/Lgdev07/olist_challenge/utils"
+	"github.com/Lgdev07/libraryes/models"
+	"github.com/Lgdev07/libraryes/utils"
 	"github.com/gorilla/mux"
 )
 

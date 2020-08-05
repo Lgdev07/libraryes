@@ -1,6 +1,6 @@
 FROM golang:alpine
 
-WORKDIR /olist_challenge_test
+WORKDIR /libraryes_test
 
 COPY go.mod go.sum ./
 

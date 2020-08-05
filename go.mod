@@ -1,4 +1,4 @@
-module github.com/Lgdev07/olist_challenge
+module github.com/Lgdev07/libraryes
 
 go 1.14
 

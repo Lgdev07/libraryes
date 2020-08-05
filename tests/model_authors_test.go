@@ -4,7 +4,7 @@ import (
 	"log"
 	"testing"
 
-	"github.com/Lgdev07/olist_challenge/models"
+	"github.com/Lgdev07/libraryes/models"
 	"github.com/stretchr/testify/assert"
 )
 

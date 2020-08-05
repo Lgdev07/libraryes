@@ -8,7 +8,7 @@ import (
 	"net/http/httptest"
 	"testing"
 
-	"github.com/Lgdev07/olist_challenge/models"
+	"github.com/Lgdev07/libraryes/models"
 	"github.com/gorilla/mux"
 	"github.com/stretchr/testify/assert"
 )

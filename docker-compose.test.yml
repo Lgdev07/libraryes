@@ -1,19 +1,19 @@
 version: '3'
 services:
   app:
-    container_name: olist_challenge_app_test
+    container_name: libraryes_app_test
     build: 
       dockerfile: ./Dockerfile.test
       context: .
     restart: on-failure
     volumes:
-      - .:/olist_challenge_test
+      - .:/libraryes_test
     depends_on:
       - db_test
 
   db_test:
     image: postgres
-    container_name: olist_challenge_db_test
+    container_name: libraryes_db_test
     environment:
       - POSTGRES_USER=${DB_USER} 
       - POSTGRES_PASSWORD=${DB_PASSWORD}

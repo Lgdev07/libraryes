@@ -6,8 +6,8 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/Lgdev07/olist_challenge/middlewares"
-	"github.com/Lgdev07/olist_challenge/models"
+	"github.com/Lgdev07/libraryes/middlewares"
+	"github.com/Lgdev07/libraryes/models"
 	"github.com/gorilla/mux"
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/postgres" //postgres

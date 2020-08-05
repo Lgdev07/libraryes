@@ -6,8 +6,8 @@ import (
 	"os"
 	"testing"
 
-	"github.com/Lgdev07/olist_challenge/controllers"
-	"github.com/Lgdev07/olist_challenge/models"
+	"github.com/Lgdev07/libraryes/controllers"
+	"github.com/Lgdev07/libraryes/models"
 	"github.com/jinzhu/gorm"
 	"github.com/joho/godotenv"
 )
@@ -35,7 +35,7 @@ func TestMain(m *testing.M) {
 func CIBuild() {
 	var err error
 	DBURL := fmt.Sprintf(`host=localhost port=5432 user=lgdev07 
-	dbname=olist_challenge_test sslmode=disable password=docker`)
+	dbname=libraryes_test sslmode=disable password=docker`)
 	app.DB, err = gorm.Open("postgres", DBURL)
 	if err != nil {
 		fmt.Printf("Cannot connect to postgres database\n")

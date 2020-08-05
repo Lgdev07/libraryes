@@ -9,8 +9,8 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/Lgdev07/olist_challenge/models"
-	"github.com/Lgdev07/olist_challenge/utils"
+	"github.com/Lgdev07/libraryes/models"
+	"github.com/Lgdev07/libraryes/utils"
 )
 
 func (s *Server) CreateAuthor(w http.ResponseWriter, r *http.Request) {

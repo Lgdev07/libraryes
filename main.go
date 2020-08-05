@@ -5,7 +5,7 @@ import (
 	"log"
 	"os"
 
-	"github.com/Lgdev07/olist_challenge/controllers"
+	"github.com/Lgdev07/libraryes/controllers"
 	"github.com/joho/godotenv"
 )
 
