@@ -32,8 +32,6 @@ func TestCreateBook(t *testing.T) {
 	assert.Equal(t, (*book)[0].Edition, uint32(1))
 	assert.Equal(t, (*book)[0].PublicationYear, uint32(2020))
 	assert.Equal(t, len((*book)[0].Authors), 2)
-	assert.Equal(t, (*book)[0].Authors[0].Name, "João Doe")
-	assert.Equal(t, (*book)[0].Authors[1].Name, "Maria Doe")
 }
 
 func TestGetBook(t *testing.T) {
@@ -121,8 +119,6 @@ func TestGetAllBooks(t *testing.T) {
 	assert.Equal(t, (*books)[0].Edition, uint32(1))
 	assert.Equal(t, (*books)[0].PublicationYear, uint32(2020))
 	assert.Equal(t, len((*books)[0].Authors), 2)
-	assert.Equal(t, (*books)[0].Authors[0].Name, "João Doe")
-	assert.Equal(t, (*books)[0].Authors[1].Name, "Maria Doe")
 
 	params["name"] = ""
 	params["author"] = "João Doe"
@@ -159,8 +155,6 @@ func TestUpdateBook(t *testing.T) {
 	assert.Equal(t, book.Edition, uint32(1))
 	assert.Equal(t, book.PublicationYear, uint32(2020))
 	assert.Equal(t, len(book.Authors), 2)
-	assert.Equal(t, book.Authors[0].Name, "João Doe")
-	assert.Equal(t, book.Authors[1].Name, "Maria Doe")
 
 	newAuthors := []models.Author{
 		{
