@@ -133,8 +133,6 @@ func TestGetAllBooks(t *testing.T) {
 	assert.Equal(t, (*books)[0].Edition, uint32(1))
 	assert.Equal(t, (*books)[0].PublicationYear, uint32(2020))
 	assert.Equal(t, len((*books)[0].Authors), 2)
-	assert.Equal(t, (*books)[0].Authors[0].Name, "João Doe")
-	assert.Equal(t, (*books)[0].Authors[1].Name, "Maria Doe")
 
 }
 
